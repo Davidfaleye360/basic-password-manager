@@ -74,6 +74,18 @@ def find_password():
             pyperclip.copy(password)
             messagebox.showinfo(title='website data', message=f'User Name: {user_name}\nPassword: {password}\nThe password has been copied to your clipboard. You can paste it where needed.')
 
+# ---------------------------- all sites ------------------------------ #
+def all_sites():
+    try:
+        with open('data.json') as all_data:
+            data = json.load(all_data)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error", message="You have not saved any passwords yet")
+    else:
+        sites = []
+        for site in data:
+            sites.append(site)
+        messagebox.showinfo(title='All sites', message=str(sites))    
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -117,7 +129,10 @@ search_button.grid(row=1, column=2)
 password_button = Button(text='Generate Password', command=generate_password)
 password_button.grid(row=3, column=2)
 
-add_button = Button(text='Add', width=49, command=add_password)
-add_button.grid(row=4, column=1, columnspan=2)
+add_button = Button(text='Add', width=33, command=add_password)
+add_button.grid(row=4, column=1)
+
+saved_sites_button = Button(text='All Saved Sites', width=14, command=all_sites)
+saved_sites_button.grid(row=4, column=2)
 
 windows.mainloop()
