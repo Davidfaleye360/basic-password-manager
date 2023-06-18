@@ -1,4 +1,4 @@
-# basic-password-manager
+# password-manager
 a software where you can input a site and your user name for the site. you can then either type a password or generate one by clicking generate password.
 Information is stored in a json file.
 You can update password by resaving it
